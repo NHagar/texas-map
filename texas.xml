@@ -1,0 +1,33 @@
+<!DOCTYPE Map>
+<!-- Sample Mapnik XML template by Dane Springmeyer -->
+<Map srs="+proj=latlong +datum=WGS84" background-color="white" minimum-version="0.7.2">
+
+  <Style name="reps">
+
+     <!-- Built from Seven Class sequential YIGnBu from www.colorbrewer.org -->
+     <!-- Quantile breaks originally from QGIS layer classification -->
+     <Rule>
+      <Filter>[party] = '(R)'</Filter>
+      <PolygonSymbolizer fill="#c7e9b4"/>
+      <LineSymbolizer stroke="black" stroke-width=".1"/>
+     </Rule>
+
+     <Rule>
+      <Filter>[party] = '(D)'</Filter>
+      <PolygonSymbolizer fill="#1d91c0"/>
+      <LineSymbolizer stroke="black" stroke-width=".1"/>
+     </Rule>
+
+   </Style>
+
+  <Layer name="representatives" srs="+proj=latlong +datum=WGS84" status="on">
+    <!-- Style order determines layering hierarchy -->
+    <!-- Labels go on top so they are listed second -->
+    <StyleName>reps</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">PLANH358/PLANH358.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
